@@ -1,0 +1,44 @@
+#Implementacion de funciones con Threads
+#Alumno:Cristian Jose Rodriguez Rojas
+#Codigo: 191427
+#FINESI
+#******************************************
+import math
+import time #pip install time
+from threading import Thread
+import threading
+
+#Forma 1 numeros pares entre 1 y n
+def numPar1(r):
+    time_ini = time.time()
+    c = 0
+    while(c < r):
+        print(c)
+        c = c + 2 
+    print("Total:", math.floor(r/2))
+    time_end = time.time()
+    time_total = time_end - time_ini
+    print("Time elapsed : ", time_total)
+
+#Utilizando Threads
+t = Thread(target=numPar1(5030), args=())
+t.start()
+
+print("==================================")
+print("==================================")
+
+#Forma 2 numeros pares entre 1 y n
+def numPar2(r):
+    time_ini = time.time()
+    for c in range(r):
+        if c % 2 == 0:
+           print(c)
+    print("Total: ", math.floor(r/2))
+    time_end =time.time()
+    time_total = time_end - time_ini
+    print("Time elapsed : ", time_total)
+
+#Utilizando Threads optimizando
+t = Thread(target=numPar2(5030), args=())
+t.start()  
+  
